@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ProductCard";
 import { CartDrawer } from "@/components/CartDrawer";
+import bannerImage from "@/assets/Banner.png";
 import { useState } from "react";
 
 export const Route = createFileRoute("/")({
@@ -41,13 +42,19 @@ function Index() {
     <div className="min-h-screen">
       <Toaster position="top-center" richColors />
 
-      {/* Floating cart */}
       <div className="fixed right-4 top-4 z-50">
         <CartDrawer openCheckout={cartOpen} onOpenCheckout={setCartOpen} />
       </div>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-gradient-hero px-4 pb-20 pt-16 text-primary-foreground">
+      <section
+        className="relative overflow-hidden px-4 pb-20 pt-16 text-primary-foreground"
+        style={{
+          backgroundImage: `linear-gradient(rgba(25, 49, 99, 0.45), rgba(25, 49, 99, 0.45)), url(${bannerImage})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+      >
         <div className="absolute inset-0 opacity-20">
           <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-white blur-3xl" />
           <div className="absolute -right-20 bottom-0 h-96 w-96 rounded-full bg-accent blur-3xl" />
@@ -67,7 +74,7 @@ function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="font-display text-5xl font-black leading-none tracking-tighter sm:text-6xl md:text-7xl"
+            className="font-display text-5xl font-black leading-none tracking-tighter drop-shadow-lg sm:text-6xl md:text-7xl"
           >
             ENCONTRÃO
           </motion.h1>
@@ -76,7 +83,7 @@ function Index() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mx-auto mt-4 max-w-md font-display text-lg italic opacity-90 sm:text-xl"
+            className="mx-auto mt-4 max-w-md font-display text-lg italic opacity-90 drop-shadow-md sm:text-xl"
           >
             Juventude: vocação de amor e santidade
           </motion.p>
@@ -98,7 +105,6 @@ function Index() {
           </motion.div>
         </div>
 
-        {/* wave */}
         <svg
           className="absolute bottom-0 left-0 right-0 w-full text-background"
           viewBox="0 0 1440 80"
@@ -112,8 +118,7 @@ function Index() {
         </svg>
       </section>
 
-      {/* Products */}
-      <section id="pedido" className="px-4 py-16">
+      <section id="pedido" className="bg-[#EDFBFF] px-4 py-16">
         <div className="mx-auto max-w-5xl">
           <div className="mb-10 text-center">
             <h2 className="font-display text-3xl font-bold sm:text-4xl">Monte seu pedido</h2>
@@ -122,7 +127,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6">
             <ProductCard type="simples" onCheckout={handleCheckout} />
             <ProductCard type="combo" onCheckout={handleCheckout} />
           </div>

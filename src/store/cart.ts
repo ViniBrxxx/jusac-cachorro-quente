@@ -8,7 +8,7 @@ export const PRODUCTS = {
   combo: { name: "Combo (cachorro-quente + refrigerante)", price: 12, image: "hotdog-combo" },
 } as const;
 
-export const INGREDIENTS = ["Molho", "Batata palha", "Milho", "Queijo", "Salada"] as const;
+export const INGREDIENTS = ["Molho", "Batata palha", "Milho", "Queijo", "Salada", "Beterraba"] as const;
 export type Ingredient = (typeof INGREDIENTS)[number];
 
 export interface CartItem {
